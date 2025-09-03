@@ -552,7 +552,7 @@ const getFbq = () => {
   }
 
   // Define fbq function
-  const fbq = function() {
+  fbq = function() {
     fbq.callMethod
       ? fbq.callMethod.apply(fbq, arguments)
       : fbq.queue.push(arguments);

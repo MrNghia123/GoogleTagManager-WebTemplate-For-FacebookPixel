@@ -551,17 +551,20 @@ const getFbq = () => {
   if (fbq) {
     return fbq;
   }
+
+  // Define fbq function
+  const fbq = function() {
+    fbq.callMethod
+      ? fbq.callMethod.apply(fbq, arguments)
+      : fbq.queue.push(arguments);
+  };
   
-  // Initialize the 'fbq' global method to either use
-  // fbq.callMethod or fbq.queue)
-  setInWindow('fbq', function() {    
-    const callMethod = copyFromWindow('fbq.callMethod.apply');
-    if (callMethod) {           
-      callInWindow('fbq.callMethod.apply', null, arguments); 
-    } else {       
-      callInWindow('fbq.queue.push', arguments);
-    }
-  });
+  fbq.push = fbq;
+  fbq.loaded = true;
+  fbq.version = '2.0';
+  
+  // Set up global fbq properties
+  setInWindow('fbq', fbq);
   aliasInWindow('_fbq', 'fbq');
   
   // Create the fbq.queue

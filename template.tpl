@@ -466,7 +466,6 @@ ___TEMPLATE_PARAMETERS___
 
 ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 
-const createQueue = require('createQueue');
 const callInWindow = require('callInWindow');
 const aliasInWindow = require('aliasInWindow');
 const copyFromWindow = require('copyFromWindow');
@@ -562,13 +561,14 @@ const getFbq = () => {
   fbq.push = fbq;
   fbq.loaded = true;
   fbq.version = '2.0';
-  
+  fbq.queue = [];
+
   // Set up global fbq properties
   setInWindow('fbq', fbq);
   aliasInWindow('_fbq', 'fbq');
   
   // Create the fbq.queue
-  createQueue('fbq.queue');
+  // createQueue('fbq.queue');
     
   // Return the global 'fbq' method, created above
   return copyFromWindow('fbq');

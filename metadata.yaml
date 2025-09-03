@@ -2,7 +2,7 @@ homepage: "https://woolytech.com/"
 documentation: "https://woolytech.com/custom-templates/meta-pixel"
 versions:
   # Latest version
-  - sha: 11c0
+  - sha: 34a5a5467bef70b93e37ee0dae35a1800460731e
     changeNotes: Corrected the fbq load function
   # Older versions
   - sha: 11c004614f6b8f7cc999caabef521086116ce302
